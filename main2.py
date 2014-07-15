@@ -1,4 +1,4 @@
-import numpy as np
+#import numpy as np
 from gensim import corpora, models, similarities
 _filename = ".txt"
 
