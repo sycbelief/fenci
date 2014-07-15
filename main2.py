@@ -1,29 +1,24 @@
-#import numpy as np
 from gensim import corpora, models, similarities
 _filename = ".txt"
 
-numOfDoc = 5
-numOfWords = 1
-worddic = {}
 texts = []
-countArray = np.zeros((numOfDoc))
 for i in range(5):
     filename = str(i+1) + _filename
     file = open(filename, 'r', encoding = "gbk")
     tmp = file.readline().split()
     texts.append(tmp)
-#print (texts)
-#print ()
+print (texts)
+print ()
 
 dictionary = corpora.Dictionary(texts)
 dictionary.save('deerwester.dict')
-#print (dictionary.token2id)
-#print ()
+print (dictionary.token2id)
+print ()
 
 corpus = [dictionary.doc2bow(text) for text in texts]
 corpora.MmCorpus.serialize('deerwester.mm', corpus)
-#print (corpus)
-#print ()
+print (corpus)
+print ()
 
 
 tfidf = models.TfidfModel(corpus)
